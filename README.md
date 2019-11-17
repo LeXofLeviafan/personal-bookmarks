@@ -87,7 +87,7 @@ Now you can access the app from any linked URL (default ones are `<project-id>.w
 
 #### Backups
 
-If you don't want to lose all of your data by accident (which *shouldn't* happend but who knows?), you can set up database backups.
+If you don't want to lose all of your data by accident (which *shouldn't* happen but who knows?), you can set up database backups.
 To do so, you'll need to open the [Firebase WebUI](https://console.firebase.google.com), open Service Accounts in project settings,
 and download a private key token from Firebase SDK section (save it as `firebase-token.json`).
 Take note that if you lose the token file, you'll have to generate a new one.
