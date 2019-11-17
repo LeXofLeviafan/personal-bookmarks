@@ -1,0 +1,9 @@
+/.shadow-cljs/
+/.firebase*
+node_modules/
+/public/js
+/public/css/blueprint/
+/public/resources/
+/public/404.html
+firebase*.json
+/backups

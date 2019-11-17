@@ -1,0 +1,17 @@
+{:nrepl        {:port 9000}
+ :source-paths ["src"]
+
+ :dependencies [[binaryage/devtools "0.9.11"]
+                [proto-repl "0.3.1"]
+                [reagent "0.9.0-rc2"]
+                [re-frame "0.11.0-rc2"]
+                [medley "1.2.0"]			; [map-vals filter-keys] etc
+                [binaryage/oops "0.7.0"]		; [oget oset! oapply+] etc
+                [alexeypopov/cljs-promises "0.1.0"]]	; convert promises to channels
+
+ :builds {:app {:target     :browser
+                :output-dir "public/js"
+                :asset-path "/js"
+                :modules    {:app {:entries [app.core]}}
+                :devtools   {:http-root "public"
+                             :http-port 3000}}}}

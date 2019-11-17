@@ -1,0 +1,41 @@
+{
+  "name": "bookmarks",
+  "version": "0.0.1",
+  "description": "My personal bookmarks collection",
+  "keywords": [
+    "clojurescript",
+    "cljs",
+    "firebase",
+    "reagent"
+  ],
+  "author": "LeXofLeviafan",
+  "license": "ISC",
+  "scripts": {
+    "watch": "yarn pre-build && shadow-cljs watch app",
+    "release": "yarn pre-build && shadow-cljs release app",
+    "server": "shadow-cljs server",
+    "repl": "rlwrap shadow-cljs clj-repl",
+    "clean": "rimraf public/js public/resources public/css/blueprint",
+    "pre-build": "yarn clean && wisp -r pre-build.wisp",
+    "backup": "wisp -r backup.wisp",
+    "convert": "wisp -r convert.wisp +"
+  },
+  "dependencies": {
+    "@blueprintjs/core": "^3.16.2",
+    "firebase": "^6.2.3",
+    "jssha": "^2.3.1",
+    "marked": "^0.6.2",
+    "qrcode-generator": "^1.4.4"
+  },
+  "devDependencies": {
+    "create-react-class": "^15.6.3",
+    "firebase-admin": "^8.7.0",
+    "minimist": "^1.2.0",
+    "ncp": "^2.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "rimraf": "^3.0.0",
+    "shadow-cljs": "^2.6.10",
+    "wisp": "^0.11.3"
+  }
+}
