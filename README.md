@@ -39,26 +39,26 @@ For a TL;DR version (what the app looks like) you can check out [screenshots](#s
 1. [Clone] or download the sources to your computer.
 2. Run `yarn` in the project root to install dependencies.
 3. Set up your Firebase backend:
-  - create a project [in Firebase WebUI](https://console.firebase.google.com)
-  - go to project settings and register a webapp
-    + take app config from the Config section and save it as `firebase.json` in the project root
-      (make sure it's [valid JSON](https://en.wikipedia.org/wiki/JSON#Example));
-      this step can be skipped if you're going to deploy to Firebase hosting
-      (file will be created during `firebase init` run)
-  - in the Authentication section, enable Email/Password sign-in and add an account to log in as
-    (external sign-in options aren't used to avoid requirement of logging in to any other website)
-  - in Database section, open Realtime Database and set up Rules:
-    ```json
-    {
-      "rules": {
-        ".read": "auth.uid !== null",
-        ".write": "auth.uid !== null",
-        "urls": {
-          ".indexOn": ["parent"]
-        }
-      }
-    }
-    ```
+   - create a project [in Firebase WebUI](https://console.firebase.google.com)
+   - go to project settings and register a webapp
+     + take app config from the Config section and save it as `firebase.json` in the project root
+       (make sure it's [valid JSON](https://en.wikipedia.org/wiki/JSON#Example));
+       this step can be skipped if you're going to deploy to Firebase hosting
+       (file will be created during `firebase init` run)
+   - in the Authentication section, enable Email/Password sign-in and add an account to log in as
+     (external sign-in options aren't used to avoid requirement of logging in to any other website)
+   - in Database section, open Realtime Database and set up Rules:
+     ```json
+     {
+       "rules": {
+         ".read": "auth.uid !== null",
+         ".write": "auth.uid !== null",
+         "urls": {
+           ".indexOn": ["parent"]
+         }
+       }
+     }
+     ```
 
 [Clone]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 
