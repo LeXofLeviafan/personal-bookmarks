@@ -1,7 +1,7 @@
 (ns script.convert
   (:require [wisp.compiler :as wisp]
             [wisp.runtime :refer [inc dictionary? merge =]]
-            [wisp.sequence :refer [first second last empty? map sort assoc conj reduce]]
+            [wisp.sequence :refer [first second last empty? map map-indexed sort assoc into reduce]]
             fs
             [minimist :as parse-args]))
 
@@ -12,12 +12,12 @@
                                    :alias   {:o :output, :c :collection, :h :help}
                                    :string  [:output :collection]}))
 
-(if (or args.help (empty? args._))
-  (do (print (str "USAGE: convert.wisp + [-o|--output filename] [-c|--collection key] conversions...\n"
-                  "  Takes last backup file and applies conversions (wisp function definitions (fn [item key db]))\n"
-                  "  to every item of a collection (default: 'urls').\n"
-                  "  Imported namespaces are: wisp.runtime (r/), wisp.sequence (l/), wisp.string (s/)."))
-      (process.exit)))
+(when (or args.help (empty? args._))
+  (print (str "USAGE: convert.wisp + [-o|--output filename] [-c|--collection key] conversions...\n"
+              "  Takes last backup file and applies conversions (wisp function definitions (fn [item key db]))\n"
+              "  to every item of a collection (default: 'urls').\n"
+              "  Imported namespaces are: wisp.runtime (r/), wisp.sequence (l/), wisp.string (s/)."))
+  (process.exit))
 
 
 (def requires "(ns eval (:require [wisp.runtime :as r :refer [=]]
@@ -28,12 +28,12 @@
 (def data (-> (str "backups/" last-backup) fs.read-file-sync JSON.parse))
 
 (defn dict [coll]
-  (if (dictionary? coll) coll (apply conj {} (.map (fn [x i] [i x]) (vec coll)))))
+  (if (dictionary? coll) coll (into {} (map-indexed vector (vec coll)))))
 
 (defn convert [coll fstr]
   (let [f (wisp.evaluate (str requires fstr))]
-    (apply conj {} (map (fn [e] [(first e) (f (second e) (first e) data)])
-                        (dict coll)))))
+    (into {} (map (fn [e] [(first e) (f (second e) (first e) data)])
+                  (dict coll)))))
 
 (def result (assoc data args.collection
                (reduce convert (get data args.collection) args._)))
