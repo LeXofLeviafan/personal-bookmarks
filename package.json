@@ -30,7 +30,7 @@
   "devDependencies": {
     "create-react-class": "^15.6.3",
     "firebase-admin": "^8.7.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "ncp": "^2.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
