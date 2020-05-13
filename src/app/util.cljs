@@ -3,7 +3,7 @@
             ["qrcode-generator" :as qr]
             [clojure.string :as s]
             [oops.core :refer [oget ocall]]
-            [medley.core :refer [map-keys map-vals]]
+            [medley.core :refer [map-keys map-vals find-first]]
             [re-frame.core :as rf]
             [app.api :refer [root]]))
 
@@ -75,7 +75,7 @@
   (merge (apply merge attrs) {:class (apply merge-class (map :class attrs))}))
 
 
-(defn title [{:keys [name url]}] (or name url ""))
+(defn title [{:keys [name url]}] (or (find-first not-empty [name url]) ""))
 (def title* (comp s/lower-case title second))
 
 (defn favicon-prefix [url]
