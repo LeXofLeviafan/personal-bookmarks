@@ -60,7 +60,7 @@
     (ocall evt :preventDefault)))
 
 (defn *value [event] #(let [x (if (array? %) % (oget % "target.value"))]
-                        (rf/dispatch (conj event x))))
+                        (rf/dispatch-sync (conj event x))))
 (defn *html [& text] {:dangerously-set-inner-HTML {:__html (apply str text)}})
 
 (defn merge-class [& css-classes]
