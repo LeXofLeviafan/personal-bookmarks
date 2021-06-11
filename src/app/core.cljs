@@ -3,6 +3,7 @@
             [clojure.core.async :refer-macros [go]]
             [cljs-promises.async :refer-macros [<?]]
             [reagent.core :as r]
+            [reagent.dom :as rdom]
             [re-frame.core :as rf]
             [app.util :refer [hash-route]]
             [app.events]
@@ -26,7 +27,7 @@
 
 (defn ^:dev/after-load start []
   (rf/clear-subscription-cache!)
-  (r/render-component [root] (.getElementById js/document "app")))
+  (rdom/render [root] (.getElementById js/document "app")))
 
 (defn ^:export init []
   (rf/dispatch-sync [:initialize-db])
