@@ -20,8 +20,10 @@
 
 (defn set-href [s] (rf/dispatch [:set-href s]))
 (defn href [url & content]
-  (into [:a {:href url, :target :_blank, :on-mouse-enter #(set-href url), :on-mouse-leave #(set-href nil)} [favicon url]]
-        content))
+  (let [blank @(rf/subscribe [:to-blank])]
+    (into [:a {:href url, :target (if blank :_blank), :on-mouse-enter #(set-href url), :on-mouse-leave #(set-href nil)}
+            [favicon url]]
+          content)))
 
 (defwrapper icon-button  bp/Button (merge* attrs {:class :bp3-minimal}))
 (defwrapper input-button bp/Button (merge* attrs {:class (:input class)}))

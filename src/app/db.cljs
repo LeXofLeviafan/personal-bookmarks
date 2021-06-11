@@ -7,4 +7,5 @@
 (def app-db {:loading     (boolean (js/localStorage.getItem :logon))
              :node        (hash-route)
              :scroll      js/document.body.scrollTop
+             :to-blank    true
              :passphrases #{}})

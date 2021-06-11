@@ -29,6 +29,7 @@
 (defsub :passphrases  [db _] (db :passphrases))
 (defsub :href         [db _] (db :href))
 (defsub :scroll       [db _] (db :scroll))
+(defsub :to-blank     [db _] (db :to-blank))
 
 (defsub :path          [db _] (path db))
 (defsub :path-tags     [db _] (-> db path path-tags))

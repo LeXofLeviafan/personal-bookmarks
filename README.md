@@ -105,6 +105,17 @@ remove an entry with existing children):
 yarn convert -o out.json '(fn [x k db] (if (get (:urls db) (:parent x)) x (l/assoc x :parent "")))'
 ```
 
+#### Scripting JS API (userscripts, WebView, etc.)
+
+`app.core.to_blank(mode)` sets to-blank mode (whether url `target` attribute is set to `_blank` or not).  
+`app.core.to_blank()` returns current to-blank mode value.
+
+`app.core.path()` returns data of current tree path (breadcrumbs including the current node).  
+`app.core.path(idx)` returns data from specific `path()` index (`path(-1)` for current node).
+
+`app.core.edit_dialog()` opens edit dialog for current node (equivalent to edit button click).  
+`app.core.edit_dialog({...data})` opens the edit dialog with updated data based on passed fields.
+
 
 ## Screenshots
 
