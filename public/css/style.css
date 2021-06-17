@@ -24,7 +24,8 @@ main > * {max-width: 1000px;  margin: 16px auto}
 button {font-weight: bold}
 textarea {resize: vertical}
 .bp3-tag-input-values {padding-top: 5px}
-.dialog .poster, .details .poster {max-width: 100%;  max-height: 75vh;  margin: auto;  display: block}
+.details img {max-width: 100%;  max-height: 75vh}
+.dialog .poster, .details .poster {margin: auto;  display: block}
 .details .poster {margin-top: -5px;  margin-bottom: 5px}
 .icon {height: 16px;  width: 16px;  margin-right: .5ex;  vertical-align: middle;  background: darkgrey}
 .input-prefix {line-height: 2.5em}
